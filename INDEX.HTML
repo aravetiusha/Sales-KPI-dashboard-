@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales KPI Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    color:#333;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    margin:0;
+    color:#666;
+    font-size:18px;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+    color:#007bff;
+}
+
+.charts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.chart-box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<h1>📊 Sales KPI Dashboard</h1>
+
+<div class="dashboard">
+    <div class="card">
+        <h2>Total Sales</h2>
+        <p>$22,500</p>
+    </div>
+
+    <div class="card">
+        <h2>Total Profit</h2>
+        <p>$5,200</p>
+    </div>
+
+    <div class="card">
+        <h2>Total Orders</h2>
+        <p>350</p>
+    </div>
+
+    <div class="card">
+        <h2>Avg Order Value</h2>
+        <p>$64</p>
+    </div>
+</div>
+
+<div class="charts">
+
+    <div class="chart-box">
+        <h3>Monthly Sales Trend</h3>
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Sales by Category</h3>
+        <canvas id="categoryChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Sales by Region</h3>
+        <canvas id="regionChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h3>Top Products</h3>
+        <canvas id="productChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+
+// Monthly Sales
+new Chart(document.getElementById('salesChart'), {
+    type: 'line',
+    data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+        datasets: [{
+            label: 'Sales',
+            data: [3000,4000,3500,5000,4200,6800],
+            borderColor: 'blue',
+            fill:false
+        }]
+    }
+});
+
+// Category Sales
+new Chart(document.getElementById('categoryChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Technology','Furniture','Office Supplies'],
+        datasets: [{
+            label:'Sales',
+            data:[9000,7000,6500],
+            backgroundColor:['#007bff','#28a745','#ffc107']
+        }]
+    }
+});
+
+// Region Sales
+new Chart(document.getElementById('regionChart'), {
+    type: 'pie',
+    data: {
+        labels:['East','West','North','South'],
+        datasets:[{
+            data:[30,25,20,25],
+            backgroundColor:[
+                '#007bff',
+                '#28a745',
+                '#ffc107',
+                '#dc3545'
+            ]
+        }]
+    }
+});
+
+// Top Products
+new Chart(document.getElementById('productChart'), {
+    type:'bar',
+    data:{
+        labels:['Laptop','Chair','Printer','Desk','Monitor'],
+        datasets:[{
+            label:'Sales',
+            data:[5000,3000,2500,2200,1800],
+            backgroundColor:'#17a2b8'
+        }]
+    }
+});
+
+</script>
+
+</body>
+</html>
